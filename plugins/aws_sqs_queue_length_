@@ -35,7 +35,7 @@ class AWSSQSQueueLengthPlugin(MuninPlugin):
         self.region = os.environ.get('AWS_REGION', "us-east-1")
 
     def execute(self):
-        conn = SQSConnection(self.api_key, self.secret_key)
+        conn = boto.sqs.connect_to_region(self.region, aws_access_key_id=self.api_key, aws_secret_access_key=self.secret_key)
         return dict(
             (qname, conn.get_queue(qname).count())
             for qname in self.queues
