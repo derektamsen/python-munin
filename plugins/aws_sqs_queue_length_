@@ -16,7 +16,7 @@ class AWSSQSQueueLengthPlugin(MuninPlugin):
 
     @property
     def title(self):
-        return "Length of AWS SQS queues '%s'" % ",".join(self.queues)
+        return "Length of AWS SQS queues in '%s'" % self.region
 
     @property
     def fields(self):
